@@ -14,17 +14,15 @@ namespace MISP_.Assembler
 		{
 			string inputasm = args[0];
 			string outputbin = args[1];
-			List<byte> output = new List<byte>();
+			new MemEm();
 			new Replacer();
 			new VariableHandler();
 			foreach (string item in File.ReadAllLines(inputasm))
 			{
-				if (Replacer.ProcessLine(item) != null)
-				{
-					output.AddRange(Replacer.ProcessLine(item));
-				}
+                Console.WriteLine(item);
+                Replacer.ProcessLine(item);
 			}
-			File.WriteAllBytes(outputbin, output.ToArray());
+			File.WriteAllBytes(outputbin, MemEm.data);
 		}
 	}
 }

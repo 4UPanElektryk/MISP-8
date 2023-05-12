@@ -8,5 +8,6 @@ namespace MISP_8.Insturctions
 {
 	public class InsJP : Instruction
 	{
+		public InsJP(byte react) : base(react) { }
 	}
 }

@@ -25,14 +25,20 @@ namespace MISP_8
 		public static byte GetByte(byte p1, byte p2)
 		{
 			int address = 256 * p1 + p2;
-			Console.WriteLine("Got: 0x" + BitConverter.ToString(new byte[] { ram[address] })+" From: 0x"+BitConverter.ToString(new byte[] { p1, p2 }).Replace("-", ""));
+			if (Program.MemOutputEnabled)
+			{
+				Console.WriteLine("Got: 0x" + BitConverter.ToString(new byte[] { ram[address] })+" From: 0x"+BitConverter.ToString(new byte[] { p1, p2 }).Replace("-", ""));
+			}
 			return ram[address];
 		}
 		public static void SetByte(byte p1, byte p2, byte data)
 		{
 			int address = 256 * p1 + p2;
 			ram[address] = data;
-			Console.WriteLine("Set: 0x" + BitConverter.ToString(new byte[] { p1,p2 }).Replace("-","") + " to: 0x" + BitConverter.ToString(new byte[] { data }));
+			if (Program.MemOutputEnabled)
+			{
+				Console.WriteLine("Set: 0x" + BitConverter.ToString(new byte[] { p1, p2 }).Replace("-", "") + " to: 0x" + BitConverter.ToString(new byte[] { data }));
+			}
 		}
 		public static void Export(string path)
 		{

@@ -47,8 +47,11 @@ namespace MISP_8
 				{
 					if (instr.Reactto == RegExe)
 					{
-						Console.WriteLine("Executed Instruction: 0x" +BitConverter.ToString(new byte[] { input }));
-						Console.WriteLine("("+instr+")");
+						if (Program.CpuOutputEnabled)
+						{
+							Console.WriteLine("Executed Instruction: 0x" +BitConverter.ToString(new byte[] { input }));
+							Console.WriteLine("("+instr+")");
+						}
 						instr.RunStep(input);
 					}
 				}
@@ -59,8 +62,11 @@ namespace MISP_8
 				{
 					if (instr.Reactto == input)
 					{
-						Console.WriteLine("Executed Instruction: 0x" + BitConverter.ToString(new byte[] { input }));
-						Console.WriteLine("(" + instr + ")");
+						if (Program.CpuOutputEnabled)
+						{
+							Console.WriteLine("Executed Instruction: 0x" + BitConverter.ToString(new byte[] { input }));
+							Console.WriteLine("(" + instr + ")");
+						}
 						instr.RunStep(input);
 						if (RegExeStep != 0)
 						{
